@@ -59,7 +59,7 @@ The following files are available for the train and test data. Their description
 - 'UCI HAR Dataset/train/Inertial Signals/body_acc_x_train.txt': The body acceleration signal obtained by subtracting the gravity from the total acceleration. 
 - 'UCI HAR Dataset/train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
 
-####Dataset Notes: 
+###Dataset Notes: 
 
 - Features are normalized and bounded within [-1,1].
 - Each feature vector is a row on the text file.

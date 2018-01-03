@@ -10,13 +10,13 @@ output: html_document
 This is a code book that describes the variables, the data, and any transformations performed to clean up the data to acheive the tidy data output.
 ##Data Dictionary
 
-####Subject 
+###Subject 
 Subject performing the activity, total of 30
     
-####Activity
+###Activity
 Activity being performed at the time of taking the measurement, total of 6.
 
-####Features
+###Features
 The features selected for this original dataset come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
@@ -119,14 +119,14 @@ The complete list of variables of each feature vector is available in 'UCI HAR D
 
 As part of this project was to merge data sets, select appropriate data, then create a tidy data set, there are some prerequisites needed to view data appropriately.
 
-####Prerequisites:
+###Prerequisites:
 
 Determine Subjects with corresponding Activities, and select variables for the TEST and TRAIN data set.
 
 All of the code below was used with RStudio version 3.4.1 on a 64 bit Windows environment.
 This script requires the use of the reshape2 R package.
 
-####-STEP 1- Identify how to organize data frames.
+###-STEP 1- Identify how to organize data frames.
 
 General:
 
@@ -148,7 +148,7 @@ Read the list of measurement data ('UCI HAR Dataset/train/X_train.txt') This dat
 
 Read the acitivty indices. This will later be converted to activity name ('UCI HAR Dataset/train/y_train.txt') This data frame is stored as  yTrain
 
-####-STEP 2- Create data sets for TEST and TRAIN
+###-STEP 2- Create data sets for TEST and TRAIN
 
 Upon reading in the data, is becomes clear that the Test data sets have the same number of rows. Below, the Test and Train data is merged, respectively, into one dataset with cbind(), while naming the Subject and Activity Index name columns appropriately. The results here are data frames xTest1.1 and XTrain1.1
 
@@ -172,7 +172,7 @@ Upon reading in the data, is becomes clear that the Test data sets have the same
   xTrain1.1 <- cbind(xTrain1.1, xTrain)
 ```
   
-####-STEP 3- Combine TEST and TRAIN data sets
+###-STEP 3- Combine TEST and TRAIN data sets
 
 The resulting data sets are labeled xTest1.1 and xTrain1.1. It is identified the Subject indices between the TEST and TRAIN data set are exclusive. The two data sets are merged using rbind(). The resulting data set is called m1
 
@@ -181,7 +181,7 @@ The resulting data sets are labeled xTest1.1 and xTrain1.1. It is identified the
   m1 = rbind(xTest1.1, xTrain1.1)
 ```
 
-####-STEP 4- Assign Abbreviated Measurement Names to Respective Columns
+###-STEP 4- Assign Abbreviated Measurement Names to Respective Columns
 
 At this point, the column names of m1 includes the 561 variable readings form xTest and xTrain. One of the purposes of this project was to select mean and standard deviation measurements.
 As such, grep() was used with regular expressions to identify these variables, a character vector cols, and create a data set with only those variables. This new data set is called m2
@@ -215,7 +215,7 @@ names(m2)
 [81] "fBodyBodyGyroJerkMag-meanFreq()"
 ```
 
-####-STEP 5- Activity Names from Activity Indices
+###-STEP 5- Activity Names from Activity Indices
 The activity indices are not indicative of which activity is being performed. A new column, Activity, is created  in m2 based on the ActIndex value using a for loop with nested if statements.
   
 ```
@@ -230,7 +230,7 @@ The activity indices are not indicative of which activity is being performed. A 
   }
 ```
 
-####-STEP 6- Shorten the data set to no longer include activity index, but rather activity name
+###-STEP 6- Shorten the data set to no longer include activity index, but rather activity name
 
 As part of the project, the activity name is desired. The activity index is surperfluous at this point. The ActIndex column becomes Activity. A new data set m3 is used below.
 
@@ -241,7 +241,7 @@ As part of the project, the activity name is desired. The activity index is surp
   m3$Activity <-m2$Activity
 ```
 
-####-STEP 7- Description Variable Names
+###-STEP 7- Description Variable Names
 
 The measurement variables are not clearly indicative of what measurement they are. The column names are updated using a character vector, col2Test, sub(), and gsub() functions. 
 
@@ -313,7 +313,7 @@ names(m3)
 [81] "Body Body Gyro Jerk Mag Mean Freq"
 ```
 
-####-STEP 8- Create the tidy data set
+###-STEP 8- Create the tidy data set
 
 A tidy data set is created using the reshape2 package to create a second, independent tidy data set with the average of each variable for each activity and each subject.
 
