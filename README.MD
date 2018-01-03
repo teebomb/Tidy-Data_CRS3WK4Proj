@@ -19,7 +19,8 @@ Project files:
  - README.MD
  - CodeBook.MD
  - 'tidyDataOutput.CSV' (Output)
- - Dataset Files (Input)
+ 
+Dataset Files can be downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 ### Getting and Cleaning Data Script
  'run_analysis.R' is a script that contains a function called run_analysis(). The function utilizes input from the dataset files. The output of this function is a data frame that contains a tidy data set.
