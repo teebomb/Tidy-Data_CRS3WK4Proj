@@ -18,7 +18,7 @@ Project files:
  - 'run_analysis.R' (Script)
  - README.MD
  - CodeBook.MD
- - 'tidyDataOutput.CSV' (Output)
+ - 'tidyDataOutput.txt' (Output)
  
 Dataset Files can be downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
